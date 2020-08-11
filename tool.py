@@ -5,7 +5,7 @@ def create_menu():
     """自动创建菜单"""
     file_list = os.listdir('.')
     readme_file = open('README.MD', 'w', encoding='utf-8')
-    readme_list = ['# Self-Taught-Python\n', '> 人生苦短，我选Python;从0-1自学Python。\n\n']
+    readme_list = ['# Self-Taught-Python\n', '> 人生苦短，我选Python；从0-1自学Python！\n\n']
     for file in file_list:
         if file.find('stage') == 0:
             menu, menu_list = create_item(file)

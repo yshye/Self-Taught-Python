@@ -1,5 +1,5 @@
 # Self-Taught-Python
-> 人生苦短，我选Python;从0-1自学Python。
+> 人生苦短，我选Python；从0-1自学Python！
 
 - [第一阶段：Python基础语言](stage-01-Language/README.MD)
   - [01-基础语法](stage-01-Language/doc/01-基础语法.MD)
