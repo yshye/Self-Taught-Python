@@ -8,4 +8,4 @@
 - [第五阶段：自动化测试AUT](stage-05-AUT/README.MD)
 - [第六阶段：数据分析DA](stage-06-DA/README.MD)
 - [第七阶段：网页爬虫](stage-07-WebCrawler/README.MD)
-- [第七阶段：网页爬虫](stage-08-DevPos/README.MD)
+- [第八阶段：自动化运维](stage-08-DevPos/README.MD)

@@ -26,8 +26,9 @@ def create_item(file_dir):
     readme_list = readme_file.readlines()[:1]
     readme_list.append('\n')
     for doc in doc_list:
-        readme_list.append(f"- [{doc.replace('.MD', '')}](doc/{doc})\n")
-        print(f"- [{doc.replace('.MD', '')}](doc/{doc})")
+        if doc.endswith('.MD'):
+            readme_list.append(f"- [{doc.replace('.MD', '')}](doc/{doc})\n")
+            print(f"- [{doc.replace('.MD', '')}](doc/{doc})")
     readme_list.append('\n\n- [返回主菜单](../README.MD)')
     readme_file.close()
     readme_file = open(f'{file_dir}/README.MD', 'w', encoding='utf-8')
