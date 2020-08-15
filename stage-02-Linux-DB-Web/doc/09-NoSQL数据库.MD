@@ -4,7 +4,7 @@
 
 > 转载自 [Python-100-Days](https://github.com/jackfrued/Python-100-Days/blob/master/Day36-40/39-40.NoSQL%E5%85%A5%E9%97%A8.md)
 
-### NoSQL概述
+### 1. NoSQL概述
 
 如今，大多数的计算机系统（包括服务器、PC、移动设备等）都会产生庞大的数据量。其实，早在2012年的时候，全世界每天产生的数据量就达到了2.5EB（艾字节，$$1EB\approx10^{18}B$$）。这些数据有很大一部分是由关系型数据库来存储和管理的。 早在1970年，E.F.Codd发表了论述关系型数据库的著名论文“*A relational model of data for large shared data banks*”，这篇文章奠定了关系型数据库的基础并在接下来的数十年时间内产生了深远的影响。实践证明，关系型数据库是实现数据持久化最为重要的方式，它也是大多数应用在选择持久化方案时的首选技术。
 
@@ -22,12 +22,12 @@ NoSQL数据库按照其存储类型可以大致分为以下几类：
 
 > **说明**：想了解更多的NoSQL数据库，可以访问<http://nosql-database.org/>。
 
-### Redis概述
+### 2. Redis
 
 Redis是一种基于键值对的NoSQL数据库，它提供了对多种数据类型（字符串、哈希、列表、集合、有序集合、位图等）的支持，能够满足很多应用场景的需求。Redis将数据放在内存中，因此读写性能是非常惊人的。与此同时，Redis也提供了持久化机制，能够将内存中的数据保存到硬盘上，在发生意外状况时数据也不会丢掉。此外，Redis还支持键过期、地理信息运算、发布订阅、事务、管道、Lua脚本扩展等功能，总而言之，Redis的功能和性能都非常强大，如果项目中要实现高速缓存和消息队列这样的服务，直接交给Redis就可以了。目前，国内外很多著名的企业和商业项目都使用了Redis，包括：Twitter、Github、StackOverflow、新浪微博、百度、优酷土豆、美团、小米、唯品会等。
 
 
-#### Redis简介
+#### 2.1 Redis简介
 
 2008年，一个名为Salvatore Sanfilippo的程序员为他开发的LLOOGG项目定制了专属的数据库（因为之前他无论怎样优化MySQL，系统性能已经无法再提升了），这项工作的成果就是Redis的初始版本。后来他将Redis的代码放到了全球最大的代码托管平台[Github](<https://github.com/antirez/redis>)，从那以后，Redis引发了大量开发者的好评和关注，继而有数百人参与了Redis的开发和维护，这使得Redis的功能越来越强大和性能越来越好。
 
@@ -40,7 +40,7 @@ Redis是REmote DIctionary Server的缩写，它是一个用ANSI C编写的高性
 - Redis支持分布式集群，可以很容易的通过水平扩展来提升系统的整体性能。
 - Redis基于TCP提供的可靠传输服务进行通信，很多编程语言都提供了Redis客户端支持。
 
-#### Redis的应用场景
+#### 2.2 Redis的应用场景
 
 1. 高速缓存  - 将不常变化但又经常被访问的热点数据放到Redis数据库中，可以大大降低关系型数据库的压力，从而提升系统的响应性能。
 2. 排行榜 - 很多网站都有排行榜功能，利用Redis中的列表和有序集合可以非常方便的构造各种排行榜系统。
@@ -48,7 +48,7 @@ Redis是REmote DIctionary Server的缩写，它是一个用ANSI C编写的高性
 4. 分布式锁 - 利用Redis可以跨多台服务器实现分布式锁（类似于线程锁，但是能够被多台机器上的多个线程或进程共享）的功能，用于实现一个阻塞式操作。
 5. 消息队列 - 消息队列和高速缓存一样，是一个大型网站不可缺少的基础服务，可以实现业务解耦和非实时业务削峰等特性，这些我们都会在后面的项目中为大家展示。
 
-#### Redis的安装和配置
+#### 2.3 Redis的安装和配置
 
 可以使用Linux系统的包管理工具（如yum）来安装Redis，也可以通过在Redis的[官方网站](https://redis.io/)下载Redis的源代码，解压缩解归档之后通过make工具对源代码进行构建并安装，在更新这篇文档时，Redis官方提供的最新稳定版本是[Redis 5.0.4](http://download.redis.io/releases/redis-5.0.4.tar.gz)。
 
@@ -98,7 +98,7 @@ vim redis.conf
 
 上面这些内容就是Redis的基本配置，如果你对上面的内容感到困惑也没有关系，先把Redis用起来再回头去推敲这些内容就行了。如果想找一些参考书，[《Redis开发与运维》](https://item.jd.com/12121730.html)是一本不错的入门读物，而[《Redis实战》](https://item.jd.com/11791607.html)是不错的进阶读物。
 
-#### Redis的服务器和客户端
+#### 2.4 Redis的服务器和客户端
 
 接下来启动Redis服务器，下面的方式将以默认的配置启动Redis服务。
 
@@ -267,7 +267,7 @@ OK
    2) "44.7408"
 ```
 
-#### 在Python程序中使用Redis
+#### 2.4 在Python程序中使用Redis
 
 可以使用pip安装redis模块。redis模块的核心是名为Redis的类，该类的对象代表一个Redis客户端，通过该客户端可以向Redis服务器发送命令并获取执行的结果。上面我们在Redis客户端中使用的命令基本上就是Redis对象可以接收的消息，所以如果了解了Redis的命令就可以在Python中玩转Redis。
 
@@ -293,9 +293,9 @@ b'admin'
 {b'name': b'hao', b'age': b'38'}
 ```
 
-### MongoDB概述
+### 3. MongoDB
 
-#### MongoDB简介
+#### 3.1 MongoDB简介
 
 MongoDB是2009年问世的一个面向文档的数据库管理系统，由C++语言编写，旨在为Web应用提供可扩展的高性能数据存储解决方案。虽然在划分类别的时候后，MongoDB被认为是NoSQL的产品，但是它更像一个介于关系数据库和非关系数据库之间的产品，在非关系数据库中它功能最丰富，最像关系数据库。
 
@@ -303,7 +303,7 @@ MongoDB将数据存储为一个文档，一个文档由一系列的“键值对�
 
 目前，MongoDB已经提供了对Windows、macOS、Linux、Solaris等多个平台的支持，而且也提供了多种开发语言的驱动程序，Python当然是其中之一。
 
-#### MongoDB的安装和配置
+#### 3.2 MongoDB的安装和配置
 
 可以从MongoDB的[官方下载链接](https://www.mongodb.com/download-center#community)下载MongoDB，官方为Windows系统提供了一个Installer程序，而Linux和MacOS则提供了压缩文件。下面简单说一下Linux系统如何安装和配置MongoDB。
 
@@ -326,7 +326,7 @@ mongod --bind_ip 172.18.61.250
 
 > **说明**：上面的操作中，export命令是设置PATH环境变量，这样可以在任意路径下执行mongod来启动MongoDB服务器。MongoDB默认保存数据的路径是/data/db目录，为此要提前创建该目录。此外，在使用mongod启动MongoDB服务器时，--bind_ip参数用来将服务绑定到指定的IP地址，也可以用--port参数来指定端口，默认端口为27017。
 
-#### MongoDB基本概念
+#### 3.3 MongoDB基本概念
 
 我们通过与关系型数据库进行对照的方式来说明MongoDB中的一些概念。
 
@@ -340,7 +340,7 @@ mongod --bind_ip 172.18.61.250
 | table joins | ---         | 表连接/嵌套文档        |
 | primary key | primary key | 主键/主键（`_id`字段） |
 
-#### 通过Shell操作MongoDB
+#### 3.4 通过Shell操作MongoDB
 
 启动服务器后可以使用交互式环境跟服务器通信，如下所示。
 
@@ -491,7 +491,7 @@ connecting to: mongodb://172.18.61.250:27017/
 
 使用MongoDB可以非常方便的配置数据复制，通过冗余数据来实现数据的高可用以及灾难恢复，也可以通过数据分片来应对数据量迅速增长的需求。关于MongoDB更多的操作可以查阅[官方文档](https://mongodb-documentation.readthedocs.io/en/latest/) ，同时推荐大家阅读Kristina Chodorow写的[《MongoDB权威指南》](http://www.ituring.com.cn/book/1172)。
 
-#### 在Python程序中操作MongoDB
+#### 3.5 在Python程序中操作MongoDB
 
 可以通过pip安装pymongo来实现对MongoDB的操作。
 
@@ -547,3 +547,4 @@ python3
 ```
 
 关于PyMongo更多的知识可以通过它的[官方文档](https://api.mongodb.com/python/current/tutorial.html)进行了解，也可以使用[MongoEngine](<https://pypi.org/project/mongoengine/>)这样的库来简化Python程序对MongoDB的操作，除此之外，还有以异步I/O方式访问MongoDB的三方库[motor](<https://pypi.org/project/motor/>)都是不错的选择。
+
