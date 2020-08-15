@@ -1,5 +1,8 @@
 # Django打包和发布
 
+[<< 返回目录](../README.MD)
+
+
 目前，打包 Python 程序需要工具，有许多工具可以完成此项工作。在此教程中，我们将使用 [setuptools](https://pypi.org/project/setuptools/) 来打包我们的程序。这是推荐的打包工具（与 `发布` 分支合并）。我们仍旧使用 [pip](https://pypi.org/project/pip/) 来安装和卸载这个工具。现在，你需要安装这两个包。如果你需要帮助，你可以参考 [如何通过 pip 安装 Django](../topics/install.html#installing-official-release)，你可以通过相同的方式安装 `setuptools`。
 
 ### 打包你的应用
