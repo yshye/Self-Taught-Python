@@ -103,7 +103,7 @@ def create_item(file_dir, short_by_time=False):
         return None, None
     doc_list = os.listdir(doc_path)
     if short_by_time:
-        doc_list = sorted(doc_list, key=lambda name: os.path.getmtime(os.path.join(doc_path, name)), reverse=True)
+        doc_list = sorted(doc_list, key=lambda _name: os.path.getctime(os.path.join(doc_path, _name)), reverse=True)
     readme_file = open(f'{file_dir}/README.MD', 'r', encoding='utf-8')
 
     readme_list = readme_file.readlines()[:1]
