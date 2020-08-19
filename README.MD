@@ -29,12 +29,15 @@
 - [第四阶段：网页爬虫](stage-04-WebCrawler/README.MD)
   - [01-Python网络数据采集](stage-04-WebCrawler/doc/01-Python网络数据采集.MD)
 - [第五阶段：数据分析DA](stage-05-DA/README.MD)
+  - [01-数据分析介绍](stage-05-DA/doc/01-数据分析介绍.MD)
 - [第六阶段：自动化测试AUT](stage-06-AUT/README.MD)
 - [第七阶段：自动化运维](stage-07-DevPos/README.MD)
 - [第八阶段：机器学习AI](stage-08-AI/README.MD)
 
 ## 拓展内容
 - [拓展知识](z-other-01-expand/README.MD)
+  - [2020-08-19 《阿里巴巴Java开发手册之MySQL数据库》](z-other-01-expand/doc/阿里巴巴Java开发手册之MySQL数据库.MD)
+  - [2020-08-19 《58到家数据库30条军规解读》](z-other-01-expand/doc/58到家数据库30条军规解读.MD)
   - [2020-08-17 《如何学习计算机技术》](z-other-01-expand/doc/如何学习计算机技术.MD)
 - [随笔](z-other-02-essay/README.MD)
   - [2020-08-17 《我的选择》](z-other-02-essay/doc/我的选择.MD)
