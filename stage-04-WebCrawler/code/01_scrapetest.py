@@ -94,7 +94,7 @@ def test_parent_previous_sibling():
     file = open('res/page3.html', 'r', encoding='gbk')
     bs_obj = BeautifulSoup(file.read(), 'lxml')
     file.close()
-    print(bs_obj.find("img", {"src": "./page3_files/img1.jpg"
+    print(bs_obj.find("img", {"res": "./page3_files/img1.jpg"
                               }).parent.previous_sibling.get_text())
 
 
@@ -102,8 +102,8 @@ def test_find_img():
     file = open('res/page3.html', 'r', encoding='gbk')
     bs_obj = BeautifulSoup(file.read(), 'lxml')
     file.close()
-    images = bs_obj.findAll('img', {'src': re.compile('./page3_files/img.*.jpg')})
-    images = [item['src'] for item in images]
+    images = bs_obj.findAll('img', {'res': re.compile('./page3_files/img.*.jpg')})
+    images = [item['res'] for item in images]
     print_list(images)
 
 
