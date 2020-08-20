@@ -26,6 +26,7 @@
 - [第三阶段：Python流行框架](stage-03-Frame/README.MD)
   - [01-Django基础](stage-03-Frame/doc/01-Django基础.MD)
   - [02-Django打包和发布](stage-03-Frame/doc/02-Django打包和发布.MD)
+  - [03-Django基础案例](stage-03-Frame/doc/03-Django基础案例.MD)
 - [第四阶段：网页爬虫](stage-04-WebCrawler/README.MD)
   - [01-Python网络数据采集](stage-04-WebCrawler/doc/01-Python网络数据采集.MD)
 - [第五阶段：数据分析DA](stage-05-DA/README.MD)
