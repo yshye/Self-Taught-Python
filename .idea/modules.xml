@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/stage-03-Frame/code/django/bookmanager/.idea/bookmanager.iml" filepath="$PROJECT_DIR$/stage-03-Frame/code/django/bookmanager/.idea/bookmanager.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/python.iml" filepath="$PROJECT_DIR$/.idea/python.iml" />
     </modules>
   </component>
