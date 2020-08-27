@@ -1,15 +1,38 @@
-## Python网络数据采集
+## 网络爬虫初识
 
 [<< 返回目录](../README.MD)
 
+### 1. 概念
+> 网络爬虫（又称为网页蜘蛛，网络机器人，在FOAF社区中间，更经常的称为网页追逐者），是一种按照一定的规则，自动地抓取万维网信息的程序或者脚本。另外一些不常使用的名字还有蚂蚁、自动索引、模拟程序或者蠕虫。
+>
+>- 来自《百度百科》
 
-### 1. 抓取网页数据
+### 2. Python3 实现简单的爬虫
+#### 2.1 使用 `urllib.request` 
+> urllib 为Python内置库，直接引用即可
 ```python
 from urllib.request import urlopen
 
 def test1():
-    html = urlopen("http://pythonscraping.com/pages/page1.html")
+    html = urlopen("https://www.baidu.com")
     print(html.read())
+```
+
+#### 2.2 使用`requests`库
+> requests 是第三方库，需要安装才可以使用。 [https://github.com/requests/requests](https://github.com/requests/requests)
+
+1. 安装
+> pip install requests
+
+2. 示例
+```python
+import requests
+ 
+if __name__ == '__main__':
+    target = "http://fanyi.baidu.com/"
+    req = requests.get(url = target)
+    req.encoding = 'utf-8'
+    print(req.text)
 ```
 
 ### 2. BeautifulSoup

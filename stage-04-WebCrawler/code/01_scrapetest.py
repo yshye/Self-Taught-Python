@@ -7,7 +7,7 @@ import requests
 
 
 def test1():
-    html = urlopen("http://pythonscraping.com/pages/page1.html")
+    html = urlopen("https://www.baidu.com")
     print(html.read())
 
 
@@ -116,7 +116,7 @@ def test_lambda():
 
 
 if __name__ == '__main__':
-    # test1()
+    test1()
     # test2()
     # test3()
     # test_get_next()
@@ -125,4 +125,4 @@ if __name__ == '__main__':
     # test_next_siblings()
     # test_parent_previous_sibling()
     # test_find_img()
-    test_lambda()
+    # test_lambda()
