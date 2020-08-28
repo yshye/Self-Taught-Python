@@ -5,7 +5,8 @@
 {% block title %}
     文章详情
 {% endblock title %}
-
+<script src="{% static 'ckeditor/ckeditor/plugins/prism/lib/prism/prism_patched.min.js' %}"></script>
+<link rel="stylesheet" href="{% static 'prism/prism.css' %}">
 {% block content %}
     <div class="container">
         <div class="row">
@@ -40,6 +41,16 @@
                         </button>
                     {% endif %}
                 </div>
+                <div class="row">
+                    {% if article.avatar %}
+                        <div class="col-3">
+                            <img src="{{ article.avatar.url }}"
+                                 alt="avatar"
+                                 style="max-width:100%; border-radius: 20px"
+                            >
+                        </div>
+                    {% endif %}
+                </div>
                 <div class="col-12">
                     <p>{{ article.body | safe }}</p>
                 </div>
@@ -57,12 +68,16 @@
                                         我也要发言：
                                     </strong>
                                 </label>
-                                <textarea
-                                        type="text"
-                                        class="form-control"
-                                        id="body"
-                                        name="body"
-                                        rows="2"></textarea>
+                                <!-- 将之前的<textarea>替换掉 -->
+                                <!-- <textarea type="text"
+                                               class="form-control"
+                                               id="body"
+                                               name="body"
+                                               rows="2"></textarea>  -->
+                                <div class="col-12">
+                                    {{ comment_form.media }}
+                                    {{ comment_form.body }}
+                                </div>
                             </div>
                             <!-- 提交按钮 -->
                             <button type="submit" class="btn btn-primary ">发送</button>
@@ -88,18 +103,19 @@
                     {{ comment.created|date:"Y-m-d H:i:s" }}
                 </span> 时说：
                         </p>
-                        <pre style="font-family: inherit; font-size: 1em;"> {{ comment.body }}</pre>
+                        <pre style="font-family: inherit; font-size: 1em;"> {{ comment.body|safe }}</pre>
                     {% endfor %}
                 </div>
             </div>
             <!-- 新增的目录 -->
-            <div class="col-3 mt-4">
-                <h4><strong>目录</strong></h4>
-                <hr>
-                <div>
-                    {{ toc|safe }}
+            <div class="sidebar" id="sidebar">
+                <div class="sidebar__inner">
+                    <h4><strong>目录</strong></h4>
+                    <hr>
+                    <div>
+                        {{ toc|safe }}
+                    </div>
                 </div>
-
             </div>
 
             <!-- 新增一个隐藏的表单 -->
@@ -115,26 +131,50 @@
 
         </div>
     </div>
-    <script>
-        function confirm_delete() {
-            layer.open({
-                title: '确认删除',
-                content: "确认删除这篇文章？",
-                yes: function (index, layero) {
-                    location.href = "{% url "article:delete" article.id %}"
-                }
-            })
+    <!-- 粘性侧边栏样式 -->
+    <style>
+        .sidebar {
+            will-change: min-height;
         }
 
-        function confirm_safe_delete() {
-            layer.open({
-                title: '确认删除',
-                content: "确认删除这篇文章？",
-                yes: function (index, layero) {
-                    $('form#safe_delete button').click();
-                    layer.close(index);
-                }
-            })
+        .sidebar__inner {
+            transform: translate(0, 0);
+            transform: translate3d(0, 0, 0);
+            will-change: position, transform;
         }
-    </script>
+    </style>
+    {% block script %}
+        <!-- 引入粘性侧边栏 -->
+        <script src="{% static 'sticky_sidebar/jquery.sticky-sidebar.min.js' %}"></script>
+        <script type="text/javascript">
+            $('#sidebar').stickySidebar({
+                topSpacing: 20,
+                bottomSpacing: 20,
+            });
+        </script>
+        <script>
+            function confirm_delete() {
+                layer.open({
+                    title: '确认删除',
+                    content: "确认删除这篇文章？",
+                    yes: function (index, layero) {
+                        location.href = "{% url "article:delete" article.id %}"
+                    }
+                })
+            }
+
+            function confirm_safe_delete() {
+                layer.open({
+                    title: '确认删除',
+                    content: "确认删除这篇文章？",
+                    yes: function (index, layero) {
+                        $('form#safe_delete button').click();
+                        layer.close(index);
+                    }
+                })
+            }
+
+            $(".django-ckeditor-widget").removeAttr('style');
+        </script>
+    {% endblock script %}
 {% endblock content %}

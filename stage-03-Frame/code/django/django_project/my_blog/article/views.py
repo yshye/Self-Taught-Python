@@ -18,6 +18,9 @@ from django.db.models import Q
 from django.views.generic import ListView
 from django.views.generic.edit import CreateView
 
+# 引入评论表单
+from comment.forms import CommentForm
+
 
 # 更新文章
 # 提醒用户登录
@@ -36,6 +39,9 @@ def article_update(request, pk):
                 article.column = ArticleColumn.objects.get(id=request.POST['column'])
             else:
                 article.column = None
+            if request.FILES.get('avatar'):
+                article.avatar = request.FILES.get('avatar')
+            article.tags.set(*request.POST.get('tags').split(','), clear=True)
             article.save()
             return redirect("article:detail", pk=pk)
         else:
@@ -49,6 +55,7 @@ def article_update(request, pk):
             'article': article,
             'article_post_form': article_post_form,
             'columns': columns,
+            'tags': ','.join([x for x in article.tags.names()]),
         }
         return render(request, 'article/update.html', context)
 
@@ -78,7 +85,7 @@ def article_delete(request, pk):
 def article_create(request):
     if request.method == "POST":
         # 获取提交的数据，并赋值给表单实例
-        article_post_form = ArticlePostForm(data=request.POST)
+        article_post_form = ArticlePostForm(request.POST, request.FILES)
         # 判断提交的诗句是否满足模型要求
         if article_post_form.is_valid():
             # 保存数据，但暂时不提交到数据中
@@ -207,5 +214,6 @@ def article_detail(request, pk):
     )
     # 将markdown语法渲染成html样式
     article.body = md.convert(article.body)
-    context = {'article': article, 'toc': md.toc, 'comments': comments}
+    comment_form = CommentForm()
+    context = {'article': article, 'toc': md.toc, 'comments': comments,'comment_form': comment_form,}
     return render(request, 'article/detail.html', context)
