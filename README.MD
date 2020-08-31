@@ -31,6 +31,7 @@
   - [04-Django搭建个人博客](stage-03-Frame/doc/04-Django搭建个人博客.MD)
 - [第四阶段：网页爬虫](stage-04-WebCrawler/README.MD)
   - [01-Python网络数据采集](stage-04-WebCrawler/doc/01-Python网络数据采集.MD)
+  - [02-XPath基础及lxml解析库](stage-04-WebCrawler/doc/02-XPath基础及lxml解析库.MD)
 - [第五阶段：数据分析DA](stage-05-DA/README.MD)
   - [01-数据分析介绍](stage-05-DA/doc/01-数据分析介绍.MD)
 - [第六阶段：自动化测试AUT](stage-06-AUT/README.MD)
