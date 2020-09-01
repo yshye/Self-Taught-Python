@@ -105,14 +105,14 @@ def create_item(file_dir, short_by_time=False):
             file_icon = ''
             if ctime.date() == ntime.date():
                 file_icon = ':blue_book:'
-            elif mtime.date() == ntime.date() - datetime.timedelta(days=1):
+            elif mtime.date() >= ntime.date() - datetime.timedelta(days=1):
                 file_icon = ':pencil2:'
 
             # 24小时内
             if short_by_time:
                 ttt_str = ctime.strftime('%Y-%m-%d')
                 file_title = f"{ttt_str} 《{file_title}》"
-            readme_list.append(f"- [{file_title}](doc/{doc})\n")
+            readme_list.append(f"- {file_icon}[{file_title}](doc/{doc})\n")
             menu.append(f"  - {file_icon}[{file_title}]({file_dir}/doc/{doc})\n")
             # print(f"  └ - [{doc.replace('.MD', '')}]({file_dir}/doc/{doc})")
     readme_file.close()

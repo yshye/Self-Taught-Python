@@ -13,3 +13,4 @@
 - [09-闭包和装饰器](doc/09-闭包和装饰器.MD)
 - [10-正则表达式](doc/10-正则表达式.MD)
 - [11-turtle绘图库](doc/11-turtle绘图库.MD)
+- :blue_book:[12-datetime基本使用](doc/12-datetime基本使用.MD)
