@@ -2,7 +2,7 @@ import os
 import datetime
 
 
-class FileModel(object):
+class MdFileModel(object):
     def __init__(self, url: str, name: str):
         """
         初始化
@@ -12,35 +12,16 @@ class FileModel(object):
         self._name = name
         self._create_time = os.path.getctime(url)
         self._modify_time = os.path.getmtime(url)
-        self._children = []
 
     def create_time(self):
         time = datetime.datetime.fromtimestamp(self._create_time)
-        return time.strftime('%Y-%m-%d %H:%M:%S')
+        date = time.date()
+        return date.strftime('%Y-%m-%d')
 
     def modify_time(self):
         time = datetime.datetime.fromtimestamp(self._modify_time)
-        return time.strftime("%Y-%m-%d %H:%M:%s")
-
-    @property
-    def path(self):
-        return self._name
-
-    @path.getter
-    def path(self):
-        return self._name
-
-    @property
-    def url(self):
-        return self._url
-
-    @url.getter
-    def url(self):
-        return self._url
-
-    @url.setter
-    def url(self, _url):
-        self._url = _url
+        date = time.date()
+        return date.strftime('%Y-%m-%d')
 
     def __str__(self):
         return {"创建时间": self.create_time(), "修改时间": self.modify_time(), "文件名称": self._name}.__str__()
@@ -115,14 +96,24 @@ def create_item(file_dir, short_by_time=False):
     # print(f"- [{title}]({file_dir}/README.MD)")
     for doc in doc_list:
         if doc.endswith('.MD'):
-            name = doc.replace(".MD", '')
+            file_title = doc.replace(".MD", '')
+            ctime_long = os.path.getctime(f'{file_dir}/doc/{doc}')
+            ctime = datetime.datetime.fromtimestamp(ctime_long)
+            mtime_long = os.path.getmtime(f'{file_dir}/doc/{doc}')
+            mtime = datetime.datetime.fromtimestamp(mtime_long)
+            ntime = datetime.datetime.now()
+            file_icon = ''
+            if ctime.date() == ntime.date():
+                file_icon = ':blue_book:'
+            elif mtime.date() == ntime.date() - datetime.timedelta(days=1):
+                file_icon = ':pencil2:'
+
+            # 24小时内
             if short_by_time:
-                time_long = os.path.getctime(f'{file_dir}/doc/{doc}')
-                time = datetime.datetime.fromtimestamp(time_long)
-                ttt_str = time.strftime('%Y-%m-%d')
-                name = f"{ttt_str} 《{name}》"
-            readme_list.append(f"- [{name}](doc/{doc})\n")
-            menu.append(f"  - [{name}]({file_dir}/doc/{doc})\n")
+                ttt_str = ctime.strftime('%Y-%m-%d')
+                file_title = f"{ttt_str} 《{file_title}》"
+            readme_list.append(f"- [{file_title}](doc/{doc})\n")
+            menu.append(f"  - {file_icon}[{file_title}]({file_dir}/doc/{doc})\n")
             # print(f"  └ - [{doc.replace('.MD', '')}]({file_dir}/doc/{doc})")
     readme_file.close()
     readme_file = open(f'{file_dir}/README.MD', 'w', encoding='utf-8')
