@@ -33,6 +33,8 @@
 - [第四阶段：网页爬虫](stage-04-WebCrawler/README.MD)
   - :pencil2:[01-Python网络数据采集](stage-04-WebCrawler/doc/01-Python网络数据采集.MD)
   - :pencil2:[02-XPath基础及lxml解析库](stage-04-WebCrawler/doc/02-XPath基础及lxml解析库.MD)
+  - :blue_book:[03-JsonPath基本使用](stage-04-WebCrawler/doc/03-JsonPath基本使用.MD)
+  - :blue_book:[04-selenium基本使用](stage-04-WebCrawler/doc/04-selenium基本使用.MD)
 - [第五阶段：数据分析DA](stage-05-DA/README.MD)
   - [01-数据分析介绍](stage-05-DA/doc/01-数据分析介绍.MD)
 - [第六阶段：自动化测试AUT](stage-06-AUT/README.MD)
