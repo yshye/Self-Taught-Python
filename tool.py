@@ -101,11 +101,11 @@ def create_item(file_dir, short_by_time=False):
             ctime = datetime.datetime.fromtimestamp(ctime_long)
             mtime_long = os.path.getmtime(f'{file_dir}/doc/{doc}')
             mtime = datetime.datetime.fromtimestamp(mtime_long)
-            ntime = datetime.datetime.now()
+            n_time = datetime.datetime.now()
             file_icon = ''
-            if ctime.date() == ntime.date():
+            if ctime.date() == n_time.date():
                 file_icon = ':blue_book:'
-            elif mtime.date() >= ntime.date() - datetime.timedelta(days=1):
+            elif mtime.date() >= n_time.date() - datetime.timedelta(days=1):
                 file_icon = ':pencil2:'
 
             # 24小时内
