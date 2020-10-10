@@ -30,13 +30,16 @@
   - [02-Django打包和发布](stage-03-Frame/doc/02-Django打包和发布.MD)
   - [03-Django基础案例](stage-03-Frame/doc/03-Django基础案例.MD)
   - [04-Django搭建个人博客](stage-03-Frame/doc/04-Django搭建个人博客.MD)
-  - :blue_book:[05-Flask搭建微博系统](stage-03-Frame/doc/05-Flask搭建微博系统.MD)
+  - [05-Flask搭建微博系统](stage-03-Frame/doc/05-Flask搭建微博系统.MD)
 - [第四阶段：网页爬虫](stage-04-WebCrawler/README.MD)
   - [01-Python网络数据采集](stage-04-WebCrawler/doc/01-Python网络数据采集.MD)
   - [02-XPath基础及lxml解析库](stage-04-WebCrawler/doc/02-XPath基础及lxml解析库.MD)
   - [03-JsonPath基本使用](stage-04-WebCrawler/doc/03-JsonPath基本使用.MD)
 - [第五阶段：数据分析DA](stage-05-DA/README.MD)
   - [01-数据分析介绍](stage-05-DA/doc/01-数据分析介绍.MD)
+- [第六阶段：自动化测试AUT](stage-06-AUT/README.MD)
+  - :pencil2:[01-docker上](stage-06-AUT/doc/01-docker上.MD)
+  - :blue_book:[02-docker中](stage-06-AUT/doc/02-docker中.MD)
 
 ## 拓展内容
 - [拓展知识](z-other-01-expand/README.MD)
